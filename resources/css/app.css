@@ -1,0 +1,233 @@
+@import "@fontsource/inter";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================================
+   🌈 DEL TODOS UI SYSTEM — v2.0 (FIXED, NO ERROR)
+   Menggunakan @layer utilities UNTUK SEMUA CUSTOM CLASS
+   ===================================================================== */
+
+/* =========================================================
+   🎨 ROOT COLOR SYSTEM
+   ========================================================= */
+:root {
+  --brand: #7c3aed;
+  --brand-light: #a78bfa;
+  --brand-dark: #5b21b6;
+
+  --bg-light: #f8fafc;
+  --bg-white: #ffffff;
+
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-2xl: 1.5rem;
+
+  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.06);
+  --shadow-medium: 0 15px 40px rgba(15, 23, 42, 0.08);
+  --shadow-hard: 0 30px 60px rgba(15, 23, 42, 0.12);
+
+  --glow: 0 0 30px rgba(124, 58, 237, 0.45);
+}
+
+/* =========================================================
+   ⚡ GLOBAL BASE STYLE
+   ========================================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 font-inter antialiased;
+  transition: background 0.3s ease-in-out;
+}
+
+[x-cloak] {
+  display: none;
+}
+
+/* =========================================================
+   🔠 TYPOGRAPHY SYSTEM
+   ========================================================= */
+h1 {
+  @apply text-4xl md:text-5xl font-bold text-slate-900 mb-3;
+}
+h2 {
+  @apply text-3xl font-semibold text-slate-900 mb-2;
+}
+h3 {
+  @apply text-2xl font-semibold text-slate-800 mb-2;
+}
+h4 {
+  @apply text-xl font-semibold text-slate-700 mb-2;
+}
+p {
+  @apply text-slate-600 leading-relaxed;
+}
+
+a {
+  @apply text-[var(--brand)] hover:text-[var(--brand-dark)] transition;
+}
+
+/* =========================================================
+   🔧 LAYER UTILITIES (WAJIB AGAR TIDAK ERROR)
+   ========================================================= */
+@layer utilities {
+
+  /* SHADOWS */
+  .shadow-soft-lg {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-medium-lg {
+    box-shadow: var(--shadow-medium);
+  }
+
+  /* GRID EXTENSIONS */
+  .grid-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+  }
+  .grid-3 {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+  }
+  .grid-4 {
+    @apply grid grid-cols-1 md:grid-cols-4 gap-6;
+  }
+
+  /* CARD SYSTEM */
+  .card {
+    @apply bg-white rounded-2xl p-6 transition-all duration-300;
+    box-shadow: var(--shadow-soft);
+  }
+  .card:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-3px);
+  }
+  .card-glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* BUTTONS */
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition active:scale-95;
+  }
+  .btn-primary {
+    @apply text-white;
+    background: var(--brand);
+  }
+  .btn-primary:hover {
+    background: var(--brand-dark);
+  }
+  .btn-secondary {
+    @apply bg-slate-100 text-slate-700;
+  }
+  .btn-secondary:hover {
+    @apply bg-slate-200;
+  }
+  .btn-outline {
+    @apply border border-slate-300 text-slate-700 bg-white;
+  }
+  .btn-outline:hover {
+    @apply bg-slate-100;
+  }
+  .btn-danger {
+    @apply bg-red-500 text-white;
+  }
+  .btn-danger:hover {
+    @apply bg-red-600;
+  }
+
+  /* INPUTS */
+  .input {
+    @apply w-full border border-slate-200 rounded-xl px-4 py-3 bg-white 
+           focus:outline-none focus:ring-2 focus:ring-[var(--brand-light)] 
+           transition placeholder:text-slate-400;
+  }
+  .textarea {
+    @apply w-full border border-slate-200 rounded-xl px-4 py-3 bg-white min-h-[140px]
+           focus:outline-none focus:ring-2 focus:ring-[var(--brand-light)];
+  }
+
+  /* BADGES */
+  .badge {
+    @apply px-3 py-1 text-xs font-medium rounded-full;
+  }
+  .badge-active {
+    background: var(--brand-light);
+    color: var(--brand-dark);
+  }
+  .badge-done {
+    @apply bg-green-100 text-green-700;
+  }
+  .badge-pending {
+    @apply bg-yellow-100 text-yellow-700;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    @apply bg-white rounded-2xl p-6 flex flex-col gap-4;
+    box-shadow: var(--shadow-soft);
+  }
+  .sidebar-item {
+    @apply flex items-center gap-3 p-3 rounded-xl cursor-pointer transition;
+  }
+  .sidebar-item:hover {
+    @apply bg-slate-100;
+  }
+  .sidebar-active {
+    background: var(--brand);
+    color: white;
+  }
+
+  /* ALERTS */
+  .alert {
+    @apply p-4 rounded-xl mb-4;
+  }
+  .alert-success {
+    @apply bg-green-100 text-green-700 border border-green-300;
+  }
+  .alert-error {
+    @apply bg-red-100 text-red-700 border border-red-300;
+  }
+
+  /* HOVER EFFECTS */
+  .hover-glow {
+    transition: box-shadow 0.25s ease-in-out;
+  }
+  .hover-glow:hover {
+    box-shadow: var(--glow);
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    animation: fadeIn 0.55s ease-out;
+  }
+  .slide-up {
+    animation: slideUp 0.55s ease-out;
+  }
+  .fade-scale {
+    animation: fadeScale 0.45s ease-out;
+  }
+}
+
+/* KEYFRAMES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeScale {
+  from { opacity: 0; transform: scale(0.93); }
+  to { opacity: 1; transform: scale(1); }
+}
