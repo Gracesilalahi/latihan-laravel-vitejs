@@ -1,6 +1,7 @@
 import "../css/app.css";
 import "./bootstrap";
 
+
 import React, { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
@@ -19,7 +20,9 @@ const pages = import.meta.glob("./Pages/**/*.jsx", { eager: true });
 // Resolver halaman
 function resolvePage(name) {
     if (!name) {
-        console.warn("⚠️ Laravel tidak mengirimkan nama halaman. Fallback ke Welcome.");
+        console.warn(
+            "⚠️ Laravel tidak mengirimkan nama halaman. Fallback ke Welcome."
+        );
         return pages["./Pages/Welcome.jsx"].default;
     }
 
@@ -32,6 +35,16 @@ function resolvePage(name) {
     return pages["./Pages/Welcome.jsx"].default;
 }
 
+// Debug: cek semua halaman yang dikenali Vite
+console.log("📂 Daftar halaman React yang terdeteksi oleh Vite:");
+for (const path in pages) {
+    console.log(
+        path,
+        "=>",
+        pages[path].default.name || "(anonymous component)"
+    );
+}
+
 // Setup Inertia
 createInertiaApp({
     title: (title) => `${title} | Todos Dashboard`,
@@ -41,7 +54,8 @@ createInertiaApp({
             createRoot(el).render(
                 <div className="flex justify-center items-center min-h-screen bg-red-50">
                     <p className="text-lg font-bold text-red-600 p-6 border border-red-300 rounded-lg shadow-lg">
-                        ⚠️ Initial Page Props Error — Periksa response controller Laravel.
+                        ⚠️ Initial Page Props Error — Periksa response
+                        controller Laravel.
                     </p>
                 </div>
             );
