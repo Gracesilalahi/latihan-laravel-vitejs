@@ -9,14 +9,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('todos', function (Blueprint $table) {
-            $table->text('note')->nullable()->after('title');
+            if (!Schema::hasColumn('todos', 'status')) {
+                $table->string('status')->default('pending');
+            }
         });
     }
 
     public function down(): void
     {
         Schema::table('todos', function (Blueprint $table) {
-            $table->dropColumn('note');
+            if (Schema::hasColumn('todos', 'status')) {
+                $table->dropColumn('status');
+            }
         });
     }
 };
