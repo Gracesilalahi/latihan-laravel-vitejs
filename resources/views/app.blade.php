@@ -7,7 +7,12 @@
 
     @routes {{-- Ziggy --}}
     @viteReactRefresh
-    @vite('resources/js/app.jsx') {{-- FIX: jangan load Pages/** --}}
+    @viteReactRefresh
+@vite([
+    'resources/js/app.jsx',
+    "resources/js/Pages/{$page['component']}.jsx"
+])
+
     @inertiaHead
 </head>
 
