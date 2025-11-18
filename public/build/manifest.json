@@ -56,7 +56,7 @@
     "src": "node_modules/@fontsource/inter/files/inter-vietnamese-400-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CIcZb3Py.css",
+    "file": "assets/app-B7AcqsgF.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -65,13 +65,13 @@
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-Cwga2Dc_.js",
+    "file": "assets/app-Cd0l22dI.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
     "css": [
       "assets/app-CpXwwO1r.css",
-      "assets/app-CIcZb3Py.css"
+      "assets/app-B7AcqsgF.css"
     ],
     "assets": [
       "assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2",
