@@ -16,7 +16,7 @@
 
 /public/hot
 /public/storage
-/public/build  <-- TAMBAHAN PENTING
+
 /storage/*.key
 /storage/pail
 /vendor
